@@ -1,0 +1,95 @@
+工作区Working Directory			版本库Repository
+	add————>	  暂存区stage	  ---->commit	  分支master
+
+git下载镜像：
+https://npm.taobao.org/mirrors/git-for-windows/
+初始化仓库：
+git init
+仓库当前状态：
+git status
+查看工作区和暂存区差异:
+git diff
+查看暂存区和仓库差异：
+git diff --cached
+查看工作区和仓库的差异：
+git diff HEAD
+从本地工作区添加到.git中的暂存区
+git add ""
+从暂存区提交到本地仓库
+git commit -m ""
+从远程pull本地比较远程是否有更新代码，有则解决冲突
+git pull origin 远程分支名 本地分支名
+从本地上传到远程分支
+git push origin 本地分支名 远程分支名
+配置本地信息：
+git config --global user.name ""
+git config --global user.email ""
+查看最近到最远的提交日志
+git log
+简洁显示日志
+git log --pretty=oneline
+版本回退
+git reset --hard 版本（HEAD~/版本号）
+git add反命令，撤销工作区修改，把暂存区最新版本转移到工作区
+git checkout -- file
+
+删除版本库中文件
+首先 rm file删除本地文件
+git rm file
+git commit -m "remove file"
+
+创建SSH Key
+ssh-keygen -t rsa -C "youremail@example.com"
+查看id_rsa.pub公钥文件内容添加进git setting key中
+cat ~/.ssh/id_rsa.pub
+
+本地关联远程仓库（本地内容推送到github仓库）
+git remote add origin git@github.com:xxxxx.git
+
+把本地仓库所有内容推送到远程库
+git push -u origin master
+
+git pull origin master --allow-unrelated-histories //把远程仓库和本地同步，消除差异
+git log --graph --pretty=oneline --abbrev-commit//查看分支历史
+git branch --set-upstream-to=origin/dev dev//设置远程分支和本地分支进行关联
+git switch -c dev origin/dev//创建远程分支到本地分支
+git push orign --delete dev//删除远程分支
+git push oirgin --tags//推送所有本地标签到远程
+git push origin :refs/tags/v1.0//首先删除本地标签再删除远程
+
+创建分支并切换
+git branch -b 分支名
+git switch -c 分支名
+
+创建分支
+git branch 分支名
+切换分支
+git checkout 分支名
+git switch 分支名
+
+删除分支
+git branch -d 分支名
+强制删除分支
+git branch -D 分支名
+
+合并分支
+只保留单条分支记录
+git merge 分支名
+保存之前的分支历史，merge历史，branch状态
+git merge --no-ff -m "" 分支名
+
+bug分支，将当前工作现场“存储”起来，等回复现场后继续工作
+git stash
+查看存储
+git stash list
+回复工作现场
+git stash apply
+删除存储区
+git stash drop (stash内容不删除)
+git stash pop (stash内容也删除)
+
+查看远程库信息
+git remote -v
+git branch -r
+
+git config --global --list 查看全局配置列表
